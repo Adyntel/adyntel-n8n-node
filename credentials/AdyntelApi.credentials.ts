@@ -2,6 +2,7 @@ import {
 	IAuthenticateGeneric,
 	ICredentialType,
 	INodeProperties,
+	ICredentialTestRequest,
 } from 'n8n-workflow';
 
 export class AdyntelApi implements ICredentialType {
@@ -34,11 +35,11 @@ export class AdyntelApi implements ICredentialType {
 			}
 		},
 	};
-	test = {
+	test: ICredentialTestRequest = {
 		request: {
 			baseURL: 'https://api.adyntel.com',
 			url: '/test',
-			method: 'POST' as const,
+			method: 'POST',
 			body: {
 				'api_key': '={{$credentials.apiKey}}',
 				'email': '={{$credentials.email}}',
