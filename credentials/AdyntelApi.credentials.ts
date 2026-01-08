@@ -5,7 +5,7 @@ import {
 } from 'n8n-workflow';
 
 export class AdyntelApi implements ICredentialType {
-	name = 'adyntelApi';
+	name = 'AdyntelApi';
 	displayName = 'Adyntel API';
 	documentationUrl = 'https://docs.adyntel.com';
 	properties: INodeProperties[] = [
