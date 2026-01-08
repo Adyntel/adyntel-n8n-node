@@ -16,7 +16,7 @@ export class Adyntel implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'AdyntelApi',
+				name: 'adyntelApi',
 				required: true,
 			},
 		],
@@ -37,7 +37,7 @@ export class Adyntel implements INodeType {
 					{
 						name: 'Get Facebook Ads',
 						value: 'getFacebookAds',
-						action: 'Get Meta ads data',
+						action: 'Get meta ads data',
 						description: 'Get Facebook ads data for a company domain',
 						routing: {
 							request: {
@@ -54,7 +54,7 @@ export class Adyntel implements INodeType {
 					{
 						name: 'Get LinkedIn Ads',
 						value: 'getLinkedInAds',
-						action: 'Get LinkedIn ads data',
+						action: 'Get linked in ads data',
 						description: 'Get LinkedIn ads data for a company domain',
 						routing: {
 							request: {
@@ -71,7 +71,7 @@ export class Adyntel implements INodeType {
 					{
 						name: 'Get Google Ads',
 						value: 'getGoogleAds',
-						action: 'Get Google ads data',
+						action: 'Get google ads data',
 						description: 'Get Google ads data for a company domain',
 						routing: {
 							request: {
