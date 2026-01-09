@@ -56,7 +56,7 @@ export class AdyntelApi implements ICredentialType {
 		};
 
 		try {
-			await this.helpers.request(options);
+			await (this.helpers as any).httpRequest(options);
 			return {
 				status: 'OK',
 				message: 'Authentication successful!',
