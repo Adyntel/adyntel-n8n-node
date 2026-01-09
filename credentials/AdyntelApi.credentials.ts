@@ -56,7 +56,8 @@ export class AdyntelApi implements ICredentialType {
 		};
 
 		try {
-			await (this.helpers as any).httpRequest(options);
+			// @ts-expect-error - httpRequest may not be in TypeScript types but is available at runtime
+			await this.helpers.httpRequest(options);
 			return {
 				status: 'OK',
 				message: 'Authentication successful!',
