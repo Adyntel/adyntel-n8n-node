@@ -56,7 +56,6 @@ export class AdyntelApi implements ICredentialType {
 		};
 
 		try {
-			// eslint-disable-next-line n8n-nodes-base/no-deprecated-workflow-functions
 			await this.helpers.request(options);
 			return {
 				status: 'OK',
