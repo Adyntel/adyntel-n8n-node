@@ -7,6 +7,7 @@ export class Adyntel implements INodeType {
 		icon: 'file:adyntel.svg',
 		group: ['transform'],
 		version: 1,
+		usableAsTool: true,
 		subtitle: '={{$parameter["operation"]}}',
 		description: 'Learn if a domain is running ads or not using the Adyntel API',
 		defaults: {

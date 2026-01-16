@@ -2,45 +2,33 @@
   "name": "n8n-nodes-adyntel",
   "version": "0.1.12",
   "description": "n8n node to call Adyntel's API services. Find out who's running ads on Meta, Linkedin or Google.",
-  "keywords": [
-    "n8n-community-node-package"
-  ],
+  "keywords": ["n8n-community-node-package"],
   "license": "MIT",
   "homepage": "https://adyntel.com",
-  "author": {
-    "name": "adyntel",
-    "email": "hello@adyntel.com"
-  },
+  "author": { "name": "adyntel", "email": "hello@adyntel.com" },
   "repository": {
     "type": "git",
     "url": "https://github.com/baloleanuandrei/adyntel-n8n-new"
   },
-  "engines": {
-    "node": ">=20.15"
-  },
+  "engines": { "node": ">=20.15" },
   "main": "index.js",
   "scripts": {
-    "build": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\" && tsc && gulp build:icons && node -e \"const fs=require('fs');const f='dist/credentials/AdyntelApi.credentials.js';let c=fs.readFileSync(f,'utf8');c=c.replace(/this\\.helpers\\.request/g,'this.helpers.httpRequest');fs.writeFileSync(f,c);\"",
-    "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json",
-    "test": "npm run build && npm run lint"
+    "build": "n8n-node build",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "n8n": {
     "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/AdyntelApi.credentials.js"
-    ],
-    "nodes": [
-      "dist/nodes/Adyntel/Adyntel.node.js"
-    ]
+    "strict": true,
+    "credentials": ["dist/credentials/AdyntelApi.credentials.js"],
+    "nodes": ["dist/nodes/Adyntel/Adyntel.node.js"]
   },
   "devDependencies": {
+    "@n8n/node-cli": "*",
     "@eslint/js": "^9.39.2",
     "@typescript-eslint/parser": "^8.32.0",
     "eslint": "^9.18.0",
@@ -54,13 +42,8 @@
   "overrides": {
     "axios": "^1.7.9",
     "form-data": "^4.0.1",
-    "n8n-workflow": {
-      "axios": "^1.7.9",
-      "form-data": "^4.0.1"
-    },
+    "n8n-workflow": { "axios": "^1.7.9", "form-data": "^4.0.1" },
     "@typescript-eslint/utils": "^8.52.0"
   },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  }
+  "peerDependencies": { "n8n-workflow": "*" }
 }
