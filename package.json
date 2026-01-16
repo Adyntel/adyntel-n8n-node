@@ -1,16 +1,23 @@
 {
   "name": "n8n-nodes-adyntel",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "n8n node to call Adyntel's API services. Find out who's running ads on Meta, Linkedin or Google.",
-  "keywords": ["n8n-community-node-package"],
+  "keywords": [
+    "n8n-community-node-package"
+  ],
   "license": "MIT",
   "homepage": "https://adyntel.com",
-  "author": { "name": "adyntel", "email": "hello@adyntel.com" },
+  "author": {
+    "name": "adyntel",
+    "email": "hello@adyntel.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/baloleanuandrei/adyntel-n8n-new"
   },
-  "engines": { "node": ">=20.15" },
+  "engines": {
+    "node": ">=20.15"
+  },
   "main": "index.js",
   "scripts": {
     "build": "n8n-node build",
@@ -20,12 +27,18 @@
     "release": "n8n-node release",
     "prepublishOnly": "n8n-node prerelease"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "n8n": {
     "n8nNodesApiVersion": 1,
     "strict": true,
-    "credentials": ["dist/credentials/AdyntelApi.credentials.js"],
-    "nodes": ["dist/nodes/Adyntel/Adyntel.node.js"]
+    "credentials": [
+      "dist/credentials/AdyntelApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Adyntel/Adyntel.node.js"
+    ]
   },
   "devDependencies": {
     "@n8n/node-cli": "*",
@@ -42,8 +55,13 @@
   "overrides": {
     "axios": "^1.7.9",
     "form-data": "^4.0.1",
-    "n8n-workflow": { "axios": "^1.7.9", "form-data": "^4.0.1" },
+    "n8n-workflow": {
+      "axios": "^1.7.9",
+      "form-data": "^4.0.1"
+    },
     "@typescript-eslint/utils": "^8.52.0"
   },
-  "peerDependencies": { "n8n-workflow": "*" }
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
 }
