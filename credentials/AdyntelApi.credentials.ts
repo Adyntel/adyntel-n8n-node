@@ -3,12 +3,13 @@ import {
 	ICredentialType,
 	INodeProperties,
 	ICredentialTestRequest,
+	type Icon,
 } from 'n8n-workflow';
 
 export class AdyntelApi implements ICredentialType {
 	name = 'adyntelApi';
 	displayName = 'Adyntel API';
-	// eslint-disable-next-line n8n-nodes-base/cred-class-field-documentation-url-miscased
+	icon = 'file:adyntel.svg' as Icon;
 	documentationUrl = 'https://docs.adyntel.com';
 	properties: INodeProperties[] = [
 		{
