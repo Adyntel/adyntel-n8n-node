@@ -1,17 +1,15 @@
 import {
 	IAuthenticateGeneric,
-	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
-	Icon,
+	ICredentialTestRequest,
 } from 'n8n-workflow';
 
 export class AdyntelApi implements ICredentialType {
 	name = 'adyntelApi';
 	displayName = 'Adyntel API';
+	// eslint-disable-next-line n8n-nodes-base/cred-class-field-documentation-url-miscased
 	documentationUrl = 'https://docs.adyntel.com';
-	icon: Icon = 'file:adyntel.svg';
-
 	properties: INodeProperties[] = [
 		{
 			displayName: 'API Key',
@@ -28,22 +26,19 @@ export class AdyntelApi implements ICredentialType {
 			default: '',
 		},
 	];
-
 	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
 			body: {
-				api_key: '={{$credentials.apiKey}}',
-				email: '={{$credentials.email}}',
-			},
+				'api_key': '={{$credentials.apiKey}}',
+				'email': '={{$credentials.email}}'
+			}
 		},
 	};
-
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: 'https://api.adyntel.com',
-			url: '/facebook',
 			method: 'POST',
+			url: 'https://api.adyntel.com/facebook',
 			body: {
 				api_key: '={{$credentials.apiKey}}',
 				email: '={{$credentials.email}}',
