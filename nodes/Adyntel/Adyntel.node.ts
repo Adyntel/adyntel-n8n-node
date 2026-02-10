@@ -8,7 +8,7 @@ export class Adyntel implements INodeType {
 		group: ['transform'],
 		version: 1,
 		usableAsTool: true,
-		subtitle: '={{$parameter["operation"]}}',
+		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'Learn if a domain is running ads or not using the Adyntel API',
 		defaults: {
 			name: 'Adyntel API',
@@ -30,78 +30,121 @@ export class Adyntel implements INodeType {
 		},
 		properties: [
 			{
-				displayName: 'Operation',
-				name: 'operation',
+				displayName: 'Resource',
+				name: 'resource',
 				type: 'options',
 				noDataExpression: true,
 				options: [
 					{
-						name: 'Get Facebook Ads',
-						value: 'getFacebookAds',
-						action: 'Get meta ads data',
-						description: 'Get Facebook ads data for a company domain',
+						name: 'Facebook Ad',
+						value: 'facebookAds',
+					},
+					{
+						name: 'Google Ad',
+						value: 'googleAds',
+					},
+					{
+						name: 'LinkedIn Ad',
+						value: 'linkedInAds',
+					},
+				],
+				default: 'facebookAds',
+			},
+			{
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'options',
+				noDataExpression: true,
+				displayOptions: {
+					show: {
+						resource: ['facebookAds'],
+					},
+				},
+				options: [
+					{
+						name: 'Search',
+						value: 'search',
+						action: 'Search facebook ads',
+						description: 'Search Facebook ads for a company domain',
 						routing: {
 							request: {
 								method: 'POST',
 								url: '/facebook',
 								body: {
-									api_key: '={{$credentials.apiKey}}',
-									email: '={{$credentials.email}}',
-									company_domain: '={{$parameter.companyDomain}}'
-								},
-							},
-						},
-					},
-					{
-						name: 'Get LinkedIn Ads',
-						value: 'getLinkedInAds',
-						action: 'Get linked in ads data',
-						description: 'Get LinkedIn ads data for a company domain',
-						routing: {
-							request: {
-								method: 'POST',
-								url: '/linkedin',
-								body: {
-									api_key: '={{$credentials.apiKey}}',
-									email: '={{$credentials.email}}',
-									company_domain: '={{$parameter.companyDomain}}'
-								},
-							},
-						},
-					},
-					{
-						name: 'Get Google Ads',
-						value: 'getGoogleAds',
-						action: 'Get google ads data',
-						description: 'Get Google ads data for a company domain',
-						routing: {
-							request: {
-								method: 'POST',
-								url: '/google',
-								body: {
-									api_key: '={{$credentials.apiKey}}',
-									email: '={{$credentials.email}}',
-									company_domain: '={{$parameter.companyDomain}}'
+									company_domain: '={{$parameter.companyDomain}}',
 								},
 							},
 						},
 					},
 				],
-				default: 'getFacebookAds',
+				default: 'search',
+			},
+			{
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'options',
+				noDataExpression: true,
+				displayOptions: {
+					show: {
+						resource: ['googleAds'],
+					},
+				},
+				options: [
+					{
+						name: 'Search',
+						value: 'search',
+						action: 'Search google ads',
+						description: 'Search Google ads for a company domain',
+						routing: {
+							request: {
+								method: 'POST',
+								url: '/google',
+								body: {
+									company_domain: '={{$parameter.companyDomain}}',
+								},
+							},
+						},
+					},
+				],
+				default: 'search',
+			},
+			{
+				displayName: 'Operation',
+				name: 'operation',
+				type: 'options',
+				noDataExpression: true,
+				displayOptions: {
+					show: {
+						resource: ['linkedInAds'],
+					},
+				},
+				options: [
+					{
+						name: 'Search',
+						value: 'search',
+						action: 'Search linked in ads',
+						description: 'Search LinkedIn ads for a company domain',
+						routing: {
+							request: {
+								method: 'POST',
+								url: '/linkedin',
+								body: {
+									company_domain: '={{$parameter.companyDomain}}',
+								},
+							},
+						},
+					},
+				],
+				default: 'search',
 			},
 			{
 				displayName: 'Company Domain',
 				name: 'companyDomain',
 				type: 'string',
 				required: true,
-				displayOptions: {
-					show: {
-						operation: ['getFacebookAds', 'getLinkedInAds', 'getGoogleAds'],
-					},
-				},
 				default: '',
 				description: 'The company domain to get ads data for (e.g., example.com)',
 			},
-		]
+		],
 	};
 }
