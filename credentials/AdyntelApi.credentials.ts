@@ -38,12 +38,12 @@ export class AdyntelApi implements ICredentialType {
 	};
 	test: ICredentialTestRequest = {
 		request: {
+			baseURL: 'https://api.adyntel.com',
+			url: '/auth',
 			method: 'POST',
-			url: 'https://api.adyntel.com/facebook',
 			body: {
-				api_key: '={{$credentials.apiKey}}',
 				email: '={{$credentials.email}}',
-				company_domain: 'lokalise.com',
+				api_key: '={{$credentials.apiKey}}',
 			},
 		},
 	};
