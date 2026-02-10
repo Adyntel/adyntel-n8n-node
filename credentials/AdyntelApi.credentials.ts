@@ -41,10 +41,6 @@ export class AdyntelApi implements ICredentialType {
 			baseURL: 'https://api.adyntel.com',
 			url: '/auth',
 			method: 'POST',
-			body: {
-				email: '={{$credentials.email}}',
-				api_key: '={{$credentials.apiKey}}',
-			},
 		},
 	};
 }
